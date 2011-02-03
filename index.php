@@ -13,11 +13,11 @@ require_once 'Kurt/Controller.php';
 require_once 'Kurt/Db.php';
 $request = new Kurt\Request;
 $controller = new Kurt\Controller;
-$db = new Kurt\Db;
-$dbConn = new PDO('mysql:host=localhost;dbname=ImageUploader', 'uploadusr', 'uploadpass');
 $controller->setRequest($request);
+/*$db = new Kurt\Db;
+$dbConn = new PDO('mysql:host=localhost;dbname=ImageUploader', 'uploadusr', 'uploadpass');
 $controller->setDb($db);
-$db->setDbConnection($dbConn);
+$db->setDbConnection($dbConn);*/
 
 
 //$_SESSION["username"] = "love";

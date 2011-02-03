@@ -17,10 +17,6 @@ class Request {
         return $_POST;
     }
 
-    public function getFiles() {
-        return $_FILES;
-    }
-
     public function getQuery() {
         return $_GET;
     }
@@ -29,22 +25,33 @@ class Request {
         return $_SESSION;
     }
 
-    public function actionToPerform($query) {
-        if (isset($query["action"])) {
-            if ($query["action"] == "login") {
-                return "login";
-            }
-            elseif ($query["action"] == "logout") {
-                return "logout";
-            }
-        }
-        return "home";
+    public function getFiles() {
+        return $_FILES;
     }
 
-    public function userLoggedIn($session) {
-        if (isset($session['username'])) {
-            return true;
+    public function actionToPerform($query) {
+        $page;
+        if (isset($query["action"])) {
+            if ($query["action"] == "products") {
+                $page = "products";
+            }
+            elseif ($query["action"] == "about") {
+                $page = "about";
+            }
+            elseif ($query["action"] == "hire") {
+                $page = "hire";
+            }
+            elseif ($query["action"] == "contact") {
+                $page = "contact";
+            }
+            else {
+                $page = "error";
+            }
         }
-        return false;
+        else {
+            $page = "home";
+        }
+        return $page."Action";
     }
+
 }
