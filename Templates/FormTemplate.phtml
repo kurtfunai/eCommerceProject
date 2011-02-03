@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Image Uploader</title>
+    </head>
+    <body>
+        <a href="index.php?action=logout">Logout</a><br/><br/>
+        <?php
+        if ($this->_form->hasErrors()) {
+            $errors = $this->_form->getErrorMessages();
+            foreach ($errors as $key=>$value){
+                echo "<br/>".$value;
+            }
+        }
+        if (isset($_SESSION['completionNotification'])) {
+            echo $_SESSION['completionNotification'];
+            unset($_SESSION['completionNotification']);
+        }
+        ?>
+        
+        <br/>
+        <form action="" name="imageUploader" id="imageUploader" method="post" enctype="multipart/form-data">
+            Title <input type="text" name="imageTitle"><br/>
+            File <input type="file" name="imageUploaded"><br/>
+            Description <input type="text" name="imageDescription"><br/>
+            <input type="submit" name="submit">
+            <input type="reset">
+        </form>
+        
+    </body>
+</html>

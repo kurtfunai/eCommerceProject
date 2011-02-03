@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Image Uploader</title>
+    </head>
+    <body>
+        <?php
+        if ($this->_loginForm->hasErrors()) {
+            $errors = $this->_loginForm->getErrorMessages();
+            foreach ($errors as $key=>$value){
+                echo "<br/>".$value;
+            }
+        }
+        if (isset($_SESSION['logoutNotification'])) {
+            echo $_SESSION['logoutNotification'];
+            unset($_SESSION['logoutNotification']);
+        }
+        if (isset($_SESSION['incorrectInfo'])) {
+            echo $_SESSION['incorrectInfo'];
+            unset($_SESSION['incorrectInfo']);
+        }
+        ?>
+        <br/>
+        <h3>Login</h3>
+        <form action="?action=login" name="imageUploader" id="imageUploader" method="post" enctype="multipart/form-data">
+            Username: <input type="text" name="username"><br/>
+            Password: <input type="password" name="password"><br/><br/>
+            
+            <input type="submit" name="submit" value="Sign In">
+            
+        </form>
+        
+    </body>
+</html>
