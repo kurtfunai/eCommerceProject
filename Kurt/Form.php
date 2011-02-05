@@ -19,10 +19,10 @@ class Form {
             $this->errors[] = "Please enter a contact name";
         }
         if (!isset($data['contactInfo']) || $data['contactInfo'] =="") {
-            $this->errors[] = "Please enter a email or phone number to reach you at";
+            $this->errors[] = "Please enter an email or phone number to reach you at";
         }
         if (!isset($data['contactDescription']) || $data['contactDescription'] =="") {
-            $this->errors[] = "Please enter a description how I can help";
+            $this->errors[] = "Please enter a description of how I can help";
         }
         return empty($this->errors);
     }
@@ -36,21 +36,18 @@ class Form {
         }
     }
 
+    public function repopulateForm($formElement, $defaultValue) {
+        if ($this->values[$formElement] == "") {
+            echo $defaultValue;
+        }
+        else {
+            echo $this->values[$formElement];
+        }
+    }
+    
     public function getValues(){
         //return objects from post
         return $this->values;
-    }
-
-    public function getTempFileName(){
-        //return truncated tmp file name
-        //return trim($this->_uploadedTempFileName, "/Applications/MAMP");
-        return $this->_uploadedFileName;
-    }
-    
-    public function getTempFilePath(){
-        //return truncated tmp file name
-        //return trim($this->_uploadedTempFileName, "/Applications/MAMP");
-        return $this->_uploadedFilePath;
     }
 
     public function hasErrors(){

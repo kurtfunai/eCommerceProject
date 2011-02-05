@@ -27,7 +27,6 @@ function removeDefaults() {
   }
   
   /*
-   *
   var formElements = new Array("contactName", "contactInfo", "contactDescription");
   alert($("#"+formElements[0]).val());for(var i = 0; i < formElements.length; i++){
       if (formElements[i].value == formElements[i].defaultValue)
@@ -60,16 +59,18 @@ $(document).ready(function() {
             echo "<p class='successText'>".$_SESSION['sentConfirmation']."</p>";
             unset($_SESSION['sentConfirmation']);
         }
+
+        
         ?>
 
         
         <form action="" name="hireForm" id="hireForm" onsubmit="return removeDefaults();" method="post">
             <fieldset id="fieldSet" class="weee">
-                    <input type="text" name="contactName" id="contactName" size="40" onfocus="clearField(this);" onblur="populateField(this);" value="Name..."/>
+                    <input type="text" name="contactName" id="contactName" size="40" onfocus="clearField(this);" onblur="populateField(this);" value="<?php $this->_form->repopulateForm('contactName', 'Name...') ?>" />
             
-                    <input type="text" name="contactInfo" id="contactInfo" size="40" onfocus="clearField(this);"  onblur="populateField(this);" value="Email or phone number..."/>
+                    <input type="text" name="contactInfo" id="contactInfo" size="40" onfocus="clearField(this);"  onblur="populateField(this);" value="<?php $this->_form->repopulateForm('contactInfo', 'Email or phone number...') ?>" />
             
-            		<textarea name="contactDescription" id="contactDescription" rows="6" cols="52" onfocus="clearField(this);"  onblur="populateField(this);" >Let me know how I can help...</textarea>
+            		<textarea name="contactDescription" id="contactDescription" rows="6" cols="52" onfocus="clearField(this);"  onblur="populateField(this);" ><?php $this->_form->repopulateForm('contactDescription', 'Let me know how I can help...') ?></textarea>
             </fieldset>
             <input type="submit" name="submit" class="submit" value="Send"/>
         </form>
