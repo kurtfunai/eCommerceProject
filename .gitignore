@@ -2,3 +2,5 @@ nbproject/
 *.jpg
 *.png
 *.gif
+*.psd
+.htaccess

@@ -10,7 +10,7 @@ define('APPLICATION_PATH', dirname(__FILE__));
 session_start();
 require_once 'Kurt/Request.php';
 require_once 'Kurt/Controller.php';
-require_once 'Kurt/Db.php';
+//require_once 'Kurt/Db.php';
 $request = new Kurt\Request;
 $controller = new Kurt\Controller;
 $controller->setRequest($request);

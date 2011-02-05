@@ -1,10 +1,79 @@
 <?php include("HeaderTemplate.phtml"); ?>
+<script type="text/javascript">
+function clearField(field) {
+  if (field.value==field.defaultValue)
+	{
+		field.value = "";
+	}
+}
+
+function populateField(field) {
+  if (field.value=="")
+	{
+		field.value = field.defaultValue;
+	}
+}
+
+function removeDefaults() {
+  //make this function ambiguous some day - see below
+  if ($("#contactName").val() == "Name...") {
+      $("#contactName").val('');
+  }
+  if ($("#contactInfo").val() == "Email or phone number...") {
+      $("#contactInfo").val('');
+  }
+  if ($("#contactDescription").val() == "Let me know how I can help...") {
+      $("#contactDescription").val('');
+  }
+  
+  /*
+   *
+  var formElements = new Array("contactName", "contactInfo", "contactDescription");
+  alert($("#"+formElements[0]).val());for(var i = 0; i < formElements.length; i++){
+      if (formElements[i].value == formElements[i].defaultValue)
+        {
+            alert(formElements[i].value)// = "";
+        }
+  }*/
+}
+
+$(document).ready(function() {
+        // get this working
+        $("#fieldSet").focus();
+});
+</script>
 
 <div id="content">
-     <h3>Hire Me</h3>
-     <p class="contentDescription">
-              Ut sollicitudin tempor placerat. Nunc fringilla viverra purus quis pellentesque. Suspendisse pulvinar nisl pulvinar velit pretium ornare. Phasellus vitae tristique urna. Etiam sit amet dignissim elit. Duis nunc diam, suscipit vel porttitor non, ornare at ligula. Sed ut quam leo. Vivamus accumsan gravida posuere. Mauris vel nisl sapien, vitae egestas mi. Aliquam facilisis ipsum a dui elementum interdum. Donec eros libero, dignissim ac semper nec, condimentum vitae nulla. Nulla volutpat tempus odio non ultricies. Proin sagittis ullamcorper euismod. Aliquam consequat magna a libero aliquet a pulvinar tortor iaculis.
-     </p>
+     <h3>Hire me</h3>
+        <?php
+        if ($this->_form->hasErrors()) {
+            $errors = $this->_form->getErrorMessages();
+            echo "<p class='errorText'>";
+            foreach ($errors as $key=>$value){
+                echo "<br/>".$value;
+            }
+            echo "</p>";
+        }
+
+        
+        if (isset($_SESSION['sentConfirmation'])) {
+            echo "<p class='successText'>".$_SESSION['sentConfirmation']."</p>";
+            unset($_SESSION['sentConfirmation']);
+        }
+        ?>
+
+        
+        <form action="" name="hireForm" id="hireForm" onsubmit="return removeDefaults();" method="post">
+            <fieldset id="fieldSet" class="weee">
+                    <input type="text" name="contactName" id="contactName" size="40" onfocus="clearField(this);" onblur="populateField(this);" value="Name..."/>
+            
+                    <input type="text" name="contactInfo" id="contactInfo" size="40" onfocus="clearField(this);"  onblur="populateField(this);" value="Email or phone number..."/>
+            
+            		<textarea name="contactDescription" id="contactDescription" rows="6" cols="52" onfocus="clearField(this);"  onblur="populateField(this);" >Let me know how I can help...</textarea>
+            </fieldset>
+            <input type="submit" name="submit" class="submit" value="Send"/>
+        </form>
+
 
          
 </div><!--END CONTENT-->

@@ -10,17 +10,17 @@ class View {
     protected $_form;
     protected $_loginForm;
     protected $_template;
-    
+
+    public function __construct($template) {
+        $this->_template = $template;
+    }
+
     public function render(){
         ob_start();
         include $this->_template;
 
         $buffer = ob_get_clean();
         return $buffer;
-    }
-
-    public function setTemplateFile($template){
-        $this->_template = $template;
     }
 
     public function getTemplateFile(){

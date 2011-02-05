@@ -7,38 +7,23 @@
 namespace Kurt;
 
 class Form {
-    protected $values = array("imageTitle"=>"","imageDescription"=>"");
+    protected $values = array("contactName"=>"","contactInfo"=>"","contactDescription"=>"");
     protected $errors = array();
     protected $_uploadedFileName;
     protected $_uploadedFilePath;
     
-    public function isValid($data, $files){
+    public function isValid($data){
         $this->populate($data);
         $data = $this->getValues();
-        if (!isset($data['imageTitle']) || $data['imageTitle'] =="") {
-            $this->errors[] = "No image title";
+        if (!isset($data['contactName']) || $data['contactName'] =="") {
+            $this->errors[] = "Please enter a contact name";
         }
-        if ($files["imageUploaded"]["error"] != 4) {
-            
-            if ($files["imageUploaded"]["error"] > 0) {
-                $this->errors[] = "Upload error: ".$files["imageUploaded"]["error"];
-            }
-            else{
-                //store uploadedFile temp name in protected property
-                $this->_uploadedFileName = $files["imageUploaded"]["name"];
-                $this->_uploadedFilePath = $files["imageUploaded"]["tmp_name"];
-                //var_dump($this->_uploadedTempFileName);
-            }
-            if ((($files["imageUploaded"]["type"] != "image/gif")
-                    && ($files["imageUploaded"]["type"] != "image/jpeg")
-                    && ($files["imageUploaded"]["type"] != "image/pjpeg"))){
-                    $this->errors[] = "File type must be .gif or .jpeg";
-             }
+        if (!isset($data['contactInfo']) || $data['contactInfo'] =="") {
+            $this->errors[] = "Please enter a email or phone number to reach you at";
         }
-        else {
-            $this->errors[] = "No file provided, please upload a .gif or .jpeg";
+        if (!isset($data['contactDescription']) || $data['contactDescription'] =="") {
+            $this->errors[] = "Please enter a description how I can help";
         }
-        
         return empty($this->errors);
     }
 
