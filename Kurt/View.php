@@ -7,9 +7,8 @@
 namespace Kurt;
 
 class View {
-    protected $_form;
-    protected $_loginForm;
     protected $_template;
+    protected $_values = array();
 
     public function __construct($template) {
         $this->_template = $template;
@@ -18,7 +17,6 @@ class View {
     public function render(){
         ob_start();
         include $this->_template;
-
         $buffer = ob_get_clean();
         return $buffer;
     }
@@ -27,20 +25,15 @@ class View {
         return $this->_template;
     }
 
-    public function setForm(\Kurt\Form $form){
-        $this->_form = $form;
+    public function setValue($key, $value){
+        $this->_values[$key] = $value;
     }
 
-    public function getForm(){
-        return $this->_form;
-    }
-
-    public function setLoginForm(\Kurt\LoginForm $form){
-        $this->_loginForm = $form;
-    }
-
-    public function getLoginForm(\Kurt\LoginForm $form){
-         return $this->_loginForm;
+    public function getValue($key){
+        if (isset($this->_values[$key])) {
+            return $this->_values[$key];
+        }
+        return null;
     }
     
 }

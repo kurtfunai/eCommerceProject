@@ -18,6 +18,10 @@ class Db {
        return $this->_db;
     }
 
+    public function quoteInput($value) {
+        return $this->_db->quote($value);
+    }
+
     public function insert($data, $tableName){
         
         $queryString = "INSERT INTO ". $tableName ."(";

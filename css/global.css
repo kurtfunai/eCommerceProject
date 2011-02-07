@@ -4,11 +4,13 @@
 * {
 	margin:0;
 }
+
 body {
 	background:url(../images/grid.jpg) #ffffff;
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:80%;
 }
+
 #sitewrapper {
 	background:url(../images/grid.jpg) #ffffff;
 	width:920px;
@@ -32,12 +34,12 @@ body {
 	list-style-type:none;
 	padding: 0;
 	margin-left: 295px;
-	margin-top:1px;
-	padding-top:7px;
+	margin-top:0px;
+	padding-top:23px;
 }
 
 .bannerLinks li {
-	display:inline;
+	float:left;
 	margin-right:15px;
 }
 
@@ -52,11 +54,11 @@ body {
 }
 
 .bannerTitle {
-/*    margin-left: 15px;
-	display:inline-block;
-    width: 50px;
-    height:59px;*/
+    margin-left: 15px;
+    width: 240px;
+    height:59px;
     display:block;
+    float:left;
     text-indent: -99999px;
 }
 
@@ -77,6 +79,10 @@ body {
 	padding-bottom:12px;
 }
 
+#content h3 {
+    margin-bottom: 12px;
+}
+
 #contentleft {
 	width:180px;
 	/*padding-left:12px;*/
@@ -90,10 +96,9 @@ body {
 	float: left;
 }
 
-#contentright h3{
+#contentright h3 {
 	font-family: Helvetica, Arial;
 	font-size: 200%;
-	margin-bottom: 12px;
 }
 
 #footerWrapper {
@@ -141,6 +146,18 @@ body {
 .contentDescription {
 /*	font-size: 80%;
 */}
+
+.buyNow a{
+    float:right;
+    text-decoration: none;
+    color: #000;
+    padding-bottom:2px;
+}
+.buyNow a:hover{
+    float:right;
+    border-bottom: 2px solid #000;
+    padding-bottom:0;
+}
 
 .socialList {
 	padding:0px;
@@ -200,21 +217,23 @@ body {
 }
 
 .submit {
-    width:195px;
-    padding:12px;
-    background-color:#0d0;
+    padding:10px;
+    background-color:#474812;
     text-align:left;
+    font-weight: bold;
+    font-size:16px !important;
     width:95px;
+    height: 42px;
     border:2px solid #0a0;
     display:block;
     margin:5px 0 0 0;
     font-size:18px;
     font-family:Georgia,"Times New Roman",Times,serif;
     cursor: pointer;
-    color: #000 !important;
+    color: #fff !important;
 }
 
 input[type="submit"]:hover {
     color:#fff !important;
-	background: #0e0;
+	background: #419B25;
 }

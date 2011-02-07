@@ -17,7 +17,15 @@ class Request {
         return $_POST;
     }
 
-    public function getQuery() {
+    public function getQuery($name = null) {
+        if ($name) {
+            if (isset($_GET[$name])) {
+                return $_GET[$name];
+            }
+            else {
+                return null;
+            }
+        }
         return $_GET;
     }
 
@@ -28,9 +36,9 @@ class Request {
     public function getFiles() {
         return $_FILES;
     }
-
+    
     public function actionToPerform($query) {
-        $page;
+        $page = "";
         if (isset($query["action"])) {
             if ($query["action"] == "products") {
                 $page = "products";
@@ -43,6 +51,9 @@ class Request {
             }
             elseif ($query["action"] == "contact") {
                 $page = "contact";
+            }
+            elseif ($query["action"] == "buy") {
+                $page = "buyNow";
             }
             else {
                 $page = "error";

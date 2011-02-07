@@ -36,12 +36,12 @@ class Form {
         }
     }
 
-    public function repopulateForm($formElement, $defaultValue) {
+    public function getValue($formElement, $defaultValue) {
         if ($this->values[$formElement] == "") {
-            echo $defaultValue;
+            return $defaultValue;
         }
         else {
-            echo $this->values[$formElement];
+            return $this->values[$formElement];
         }
     }
     
