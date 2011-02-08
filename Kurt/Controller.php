@@ -21,6 +21,20 @@ class Controller {
     public function productsAction() {
         require_once 'Kurt/View.php';
         $view = new View(APPLICATION_PATH."/Templates/ProductsTemplate.phtml");
+        require_once 'Kurt/Model.php';
+        $model = new Model;
+        $model->setDb($this->_db);
+        $featured = $model->getAllFeatured();
+
+        if ($featured) {
+            $productInfo = $model->getAllFeatured();
+            foreach ($productInfo as $key => $value) {
+                $view->setValue("featured_".$key, $value);
+            }
+        }
+        else {
+            //return error message
+        }
         return $view->render();
     }
 

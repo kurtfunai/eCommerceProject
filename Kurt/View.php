@@ -33,7 +33,7 @@ class View {
         if (isset($this->_values[$key])) {
             return $this->_values[$key];
         }
-        var_dump($this->_values);
+        //var_dump($this->_values);
         return null;
     }
     

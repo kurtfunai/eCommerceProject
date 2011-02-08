@@ -1,10 +1,11 @@
 <?php
 /* 
- * Object Oriented approach to an image uploader
+ * Object Oriented eCommerce website
  * Kurtis Funai
  */
 
-//make classes:request, controller, form, view, image
+
+date_default_timezone_set("America/Toronto");
 set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 define('APPLICATION_PATH', dirname(__FILE__));
 session_start();
