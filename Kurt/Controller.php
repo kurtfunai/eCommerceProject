@@ -31,16 +31,10 @@ class Controller {
                 $view->setValue("featured_".$key, $value);
             }
         }
-        else {
-            //return "There are no featured products";
-        }
 
         $nonFeatured = $model->getAllNonFeaturedProducts();
         if ($nonFeatured) {
                 $view->setValue("nonFeatured", $nonFeatured);
-        }
-        else {
-            //return "There are no non featured products";
         }
 
         return $view->render();

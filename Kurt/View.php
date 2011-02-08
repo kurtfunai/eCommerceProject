@@ -21,6 +21,10 @@ class View {
         return $buffer;
     }
 
+    public function setTemplateFile($template){
+        $this->_template = $template;
+    }
+
     public function getTemplateFile(){
         return $this->_template;
     }

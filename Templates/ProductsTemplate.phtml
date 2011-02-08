@@ -26,14 +26,22 @@
                   <a href="/?action=buy&product=<?php echo $this->getValue('featured_id');?>">Buy now</a>
               </h2>
             </div><!--END contentright-->
-    <div class="contentDivider">&nbsp;</div>
-    <?php var_dump($this->getValue('nonFeatured'));
+    
+    <?php //var_dump($this->getValue('nonFeatured'));
         $nonFeatured = $this->getValue('nonFeatured');
-        foreach ($nonFeatured as $product=>$results) {
-            echo '<br/>';
-            foreach ($results as $key=>$value) {
-                echo $value.'<br/>';
-                //check type, create appropriate view, pass values
+        foreach ($nonFeatured as $products=>$product) {
+            if ($product['productType'] == 'bundle'){
+                //require_once 'Kurt/View.php';
+                //$bundleView = new View(APPLICATION_PATH."/Templates/ProductTemplates/BundleTemplate.phtml");
+                $this->setTemplateFile(APPLICATION_PATH."/Templates/ProductTemplates/BundleTemplate.phtml");
+                $this->setValue('product',$product);
+                echo $this->render();
+            }
+            elseif ($product['productType'] == 'app') {
+
+            }
+            else {
+                echo 'There is a missing product type.<br/>';
             }
         }
     ?>
