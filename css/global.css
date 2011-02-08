@@ -147,6 +147,16 @@ body {
 /*	font-size: 80%;
 */}
 
+.clear {
+    clear:both;
+}
+
+.price {
+    float:right;
+    margin-top:12px;
+    font-weight: bold;
+}
+
 .buyNow a{
     float:right;
     text-decoration: none;
