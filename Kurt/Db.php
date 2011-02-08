@@ -47,5 +47,10 @@ class Db {
        $result = $this->_db->query($queryString)->fetchAll(PDO::FETCH_ASSOC);
        return $result;
     }
+
+    public function getSingleResult($queryString){
+       $result = $this->_db->query($queryString)->fetch(PDO::FETCH_ASSOC);
+       return $result;
+    }
     
 }

@@ -19,7 +19,7 @@ class Model {
 
     public function getProductInformation($productId){
         $queryString = "SELECT `productName`,`productPrice`,`productDescription` FROM `products` WHERE id=". $this->_db->quoteInput($productId) ;
-        $results  = $this->_db->getResults($queryString);
+        $results  = $this->_db->getSingleResult($queryString);
 
         return $results;
     }

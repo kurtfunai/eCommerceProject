@@ -83,20 +83,20 @@ body {
     margin-bottom: 12px;
 }
 
-#contentleft {
+.contentleft {
 	width:180px;
 	/*padding-left:12px;*/
 /*	font-size:80%;
 */	float:left;
 }
 
-#contentright {
+.contentright {
 	margin-left: 28px;
 	width: 470px;
 	float: left;
 }
 
-#contentright h3 {
+.contentright h3 {
 	font-family: Helvetica, Arial;
 	font-size: 200%;
 }

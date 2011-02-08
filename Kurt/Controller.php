@@ -74,8 +74,6 @@ class Controller {
             $model = new Model;
             $model->setDb($this->_db);
             $productInfo = $model->getProductInformation($productId);
-            //write to template
-            var_dump($productInfo);
             foreach ($productInfo as $key => $value) {
                 $view->setValue($key, $value);
             }
