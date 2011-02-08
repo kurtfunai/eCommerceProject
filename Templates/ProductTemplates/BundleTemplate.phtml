@@ -1,0 +1,36 @@
+<?php include("HeaderTemplate.phtml"); ?>
+
+<div id="content">
+    <div class="contentDivider">&nbsp;</div>
+            <div class="contentleft">
+              Created by <?php echo $this->getValue('featured_productAuthor');?>
+              <br/>
+              Languages: <?php echo $this->getValue('featured_productLanguages');?>
+            </div><!--END contentleft-->
+            <div class="contentright">
+
+              <h3 class="contentTitle">
+              <?php echo $this->getValue('featured_productName');?>
+              </h3>
+
+              <img src="images/<?php echo $this->getValue('featured_productImage');?>" border="0"/>
+
+              <p class="contentDescription">
+              <?php echo $this->getValue('featured_productDescription');?>
+              </p>
+              <p class="price">
+                  $<?php echo $this->getValue('featured_productPrice');?> (CAD)
+              </p>
+              <div class="clear"></div>
+              <h2 class="buyNow">
+                  <a href="/?action=buy&product=<?php echo $this->getValue('featured_id');?>">Buy now</a>
+              </h2>
+            </div><!--END contentright-->
+    <div class="contentDivider">&nbsp;</div>
+     <p class="contentDescription">
+              Ut sollicitudin tempor placerat. Nunc fringilla viverra purus quis pellentesque. Suspendisse pulvinar nisl pulvinar velit pretium ornare. Phasellus vitae tristique urna. Etiam sit amet dignissim elit. Duis nunc diam, suscipit vel porttitor non, ornare at ligula. Sed ut quam leo. Vivamus accumsan gravida posuere. Mauris vel nisl sapien, vitae egestas mi. Aliquam facilisis ipsum a dui elementum interdum. Donec eros libero, dignissim ac semper nec, condimentum vitae nulla. Nulla volutpat tempus odio non ultricies. Proin sagittis ullamcorper euismod. Aliquam consequat magna a libero aliquet a pulvinar tortor iaculis.
+     </p>
+         
+</div><!--END CONTENT-->
+
+<?php include("FooterTemplate.phtml"); ?>
