@@ -24,11 +24,17 @@ class Model {
         return $results;
     }
 
-    public function getAllFeatured() {
+    public function getAllFeaturedProducts() {
         $queryString = "SELECT * FROM `products` WHERE `featured` = true";
         $results  = $this->_db->getSingleResult($queryString);
 
         return $results;
     }
- 
+
+    public function getAllNonFeaturedProducts() {
+        $queryString = "SELECT * FROM `products` WHERE `featured` = false";
+        $results  = $this->_db->getResults($queryString);
+
+        return $results;
+    }
 }

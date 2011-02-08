@@ -24,17 +24,25 @@ class Controller {
         require_once 'Kurt/Model.php';
         $model = new Model;
         $model->setDb($this->_db);
-        $featured = $model->getAllFeatured();
+        $featured = $model->getAllFeaturedProducts();
 
         if ($featured) {
-            $productInfo = $model->getAllFeatured();
-            foreach ($productInfo as $key => $value) {
+            foreach ($featured as $key => $value) {
                 $view->setValue("featured_".$key, $value);
             }
         }
         else {
-            //return error message
+            //return "There are no featured products";
         }
+
+        $nonFeatured = $model->getAllNonFeaturedProducts();
+        if ($nonFeatured) {
+                $view->setValue("nonFeatured", $nonFeatured);
+        }
+        else {
+            //return "There are no non featured products";
+        }
+
         return $view->render();
     }
 
