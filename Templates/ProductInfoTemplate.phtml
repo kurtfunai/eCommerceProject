@@ -3,6 +3,15 @@
 
 <div id="content">
      <h3>Purchase</h3>
+     <?php
+     if (isset($_SESSION['cart'])) {
+         var_dump($_SESSION['cart']);
+         echo $_SESSION['cart'];
+        /*foreach ($_SESSION['cart'] as $key=>$value) {
+            echo $value.".";
+        }*/
+     }
+     ?>
        
        <br/><div class="contentLeft"><h3><?php echo $this->getValue("productName");?></h3></div>
        <div class="contentRight">Description: <?php echo $this->getValue('productDescription');?>

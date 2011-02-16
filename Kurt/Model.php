@@ -1,8 +1,10 @@
 <?php
 /**
- * Description of ImageModel
+ * Description of Cart
  *
- * @author kurtisfunai
+ * @author Kurtis Funai
+ * @github http://github.com/kurtfunai
+ * @site http://kurtfunai.com
  */
 namespace Kurt;
 
@@ -18,7 +20,7 @@ class Model {
     }
 
     public function getProductInformation($productId) {
-        $queryString = "SELECT `productName`,`productAuthor`, `productPrice`,`productDescription`, `productLanguages` FROM `products` WHERE id=". $this->_db->quoteInput($productId) ;
+        $queryString = "SELECT `id`, `productName`,`productAuthor`, `productPrice`,`productDescription`, `productLanguages` FROM `products` WHERE id=". $this->_db->quoteInput($productId) ;
         $results  = $this->_db->getSingleResult($queryString);
 
         return $results;

@@ -1,8 +1,10 @@
 <?php
 /**
- * Description of Controller
+ * Description of Cart
  *
- * @author kurtisfunai
+ * @author Kurtis Funai
+ * @github http://github.com/kurtfunai
+ * @site http://kurtfunai.com
  */
 namespace Kurt;
 
@@ -90,8 +92,25 @@ class Controller {
             $model = new Model;
             $model->setDb($this->_db);
             $productInfo = $model->getProductInformation($productId);
-            foreach ($productInfo as $key => $value) {
-                $view->setValue($key, $value);
+
+            if(!empty($productInfo)){
+                
+                if (!isset($_SESSION['cart'])) {
+                    $cartItems = array("items"=>array());
+                }
+                else {
+                    $cartItems = $_SESSION['cart'];
+                }
+
+                if (!in_array($productId, $_SESSION['cart']['items'])) {
+                    $cartItems['items'][] = $productId;
+                }
+
+                $_SESSION['cart'] = $cartItems;
+                
+                foreach ($productInfo as $key => $value) {
+                    $view->setValue($key, $value);
+                }
             }
         }
         else {

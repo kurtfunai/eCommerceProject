@@ -1,8 +1,10 @@
 <?php
 /**
- * Description of View
+ * Description of Cart
  *
- * @author kurtisfunai
+ * @author Kurtis Funai
+ * @github http://github.com/kurtfunai
+ * @site http://kurtfunai.com
  */
 namespace Kurt;
 

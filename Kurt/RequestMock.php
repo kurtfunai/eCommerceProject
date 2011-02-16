@@ -1,8 +1,10 @@
 <?php
 /**
- * Description of Request
+ * Description of Cart
  *
- * @author kurtisfunai
+ * @author Kurtis Funai
+ * @github http://github.com/kurtfunai
+ * @site http://kurtfunai.com
  */
 namespace Kurt;
 require_once 'Kurt/Request.php';
