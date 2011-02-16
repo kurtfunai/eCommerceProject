@@ -2,12 +2,12 @@
 
 <div id="content">
     <img src="images/whatsnew.png" class='center'/>
-            <div class="contentleft">
+            <div class="contentLeft">
               Created by <?php echo $this->getValue('featured_productAuthor');?>
               <br/>
               Languages: <?php echo $this->getValue('featured_productLanguages');?>
             </div><!--END contentleft-->
-            <div class="contentright">
+            <div class="contentRight">
 
               <h3 class="contentTitle">
               <?php echo $this->getValue('featured_productName');?>
@@ -23,12 +23,13 @@
               </p>
               <div class="clear"></div>
               <h2 class="buyNow">
-                  <a href="/?action=buy&product=<?php echo $this->getValue('featured_id');?>">Buy now</a>
+                  <a href="?action=buy&product=<?php echo $this->getValue('featured_id');?>">Buy now</a>
               </h2>
             </div><!--END contentright-->
     
     <?php //var_dump($this->getValue('nonFeatured'));
         $nonFeatured = $this->getValue('nonFeatured');
+        
         foreach ($nonFeatured as $products=>$product) {
             if ($product['productType'] == 'bundle'){
                 //require_once 'Kurt/View.php';
@@ -48,5 +49,5 @@
    
          
 </div><!--END CONTENT-->
-
+<div class="clear"></div>
 <?php include("FooterTemplate.phtml"); ?>

@@ -11,14 +11,14 @@ body {
 	font-size:80%;
 }
 
-#sitewrapper {
+#siteWrapper {
 	background:url(../images/grid.jpg) #ffffff;
 	width:920px;
 	margin-left:auto;
 	margin-right:auto;
 }
 
-#bannerwrapper {
+#bannerWrapper {
 	background:url(../images/bg.jpg) #000000;
 	height: 59px;
 }
@@ -62,7 +62,7 @@ body {
     text-indent: -99999px;
 }
 
-#contentwrapper {
+#contentWrapper {
 /*	border: 1px solid black;
 */	border-top:0px;
 }
@@ -71,6 +71,7 @@ body {
 	width: 753px;
 	min-height: 400px;
 	margin-top:60px;
+    margin-bottom: 36px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -83,28 +84,28 @@ body {
     margin-bottom: 12px;
 }
 
-.contentleft {
+.contentLeft {
 	width:180px;
 	/*padding-left:12px;*/
 /*	font-size:80%;
 */	float:left;
 }
 
-.contentright {
+.contentRight {
 	margin-left: 28px;
 	width: 470px;
 	float: left;
 }
 
-.contentright h3 {
+.contentRight h3 {
 	font-family: Helvetica, Arial;
 	font-size: 200%;
 }
 
 #footerWrapper {
 	text-align:center;
-/*	border-top:1px solid #999;*/
-	margin-top: 24px;
+/*	border-top:1px solid #999;
+	margin-top: 24px;*/
 	padding-top: 12px;
 }
 

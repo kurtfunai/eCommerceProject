@@ -60,7 +60,7 @@ class Request {
             }
         }
         else {
-            $page = "home";
+            $page = "products";
         }
         return $page."Action";
     }

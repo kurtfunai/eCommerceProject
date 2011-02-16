@@ -11,7 +11,7 @@ class Form {
     protected $errors = array();
     protected $_uploadedFileName;
     protected $_uploadedFilePath;
-    
+
     public function isValid($data){
         $this->populate($data);
         $data = $this->getValues();
@@ -44,7 +44,7 @@ class Form {
             return $this->values[$formElement];
         }
     }
-    
+
     public function getValues(){
         //return objects from post
         return $this->values;
