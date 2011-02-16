@@ -12,6 +12,7 @@ class Controller {
     protected $_db;
     protected $_request;
 
+
     public function setRequest(\Kurt\Request $request){
         $this->_request = $request;
     }
@@ -94,19 +95,20 @@ class Controller {
             $productInfo = $model->getProductInformation($productId);
 
             if(!empty($productInfo)){
+                require_once 'Kurt/Cart.php';
+                $cart = new Cart;
                 
-                if (!isset($_SESSION['cart'])) {
-                    $cartItems = array("items"=>array());
-                }
-                else {
-                    $cartItems = $_SESSION['cart'];
+                if (isset($_SESSION['cart'])) {
+                    $cart->setItems($_SESSION['cart']);
                 }
 
                 if (!in_array($productId, $_SESSION['cart']['items'])) {
-                    $cartItems['items'][] = $productId;
+                    $cart->addItem($productId);
                 }
 
-                $_SESSION['cart'] = $cartItems;
+                $_SESSION['cart'] = $cart->getItems();
+
+                 //*/
                 
                 foreach ($productInfo as $key => $value) {
                     $view->setValue($key, $value);
