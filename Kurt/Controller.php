@@ -101,10 +101,11 @@ class Controller {
                 if (isset($_SESSION['cart'])) {
                     $cart->setItems($_SESSION['cart']);
                 }
-              
-                if (!in_array($productId, $cart->getItems())) {
+
+                $cart->addItem($productId, 1);
+                /*if (!in_array($productId, $cart->getItems())) {
                     $cart->addItem($productId, 1);
-                }
+                }*/
 
                 $_SESSION['cart'] = $cart->getItems();
                 
