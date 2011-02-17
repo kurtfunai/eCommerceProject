@@ -94,21 +94,19 @@ class Controller {
             $model->setDb($this->_db);
             $productInfo = $model->getProductInformation($productId);
 
-            if(!empty($productInfo)){
+            if (!empty($productInfo)){
                 require_once 'Kurt/Cart.php';
                 $cart = new Cart;
                 
                 if (isset($_SESSION['cart'])) {
                     $cart->setItems($_SESSION['cart']);
                 }
-
-                if (!in_array($productId, $_SESSION['cart']['items'])) {
-                    $cart->addItem($productId);
+              
+                if (!in_array($productId, $cart->getItems())) {
+                    $cart->addItem($productId, 1);
                 }
 
                 $_SESSION['cart'] = $cart->getItems();
-
-                 //*/
                 
                 foreach ($productInfo as $key => $value) {
                     $view->setValue($key, $value);

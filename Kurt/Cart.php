@@ -11,8 +11,8 @@ namespace Kurt;
 class Cart {
     protected $_items = array();
 
-    public function addItem($productId) {
-        $this->_items[] = $productId;
+    public function addItem($productId, $quantity) {
+        $this->_items[] = array('id' => $productId, 'quantity' => $quantity);
     }
 
     public function removeItem() {
