@@ -5,10 +5,12 @@
      <h3>Purchase</h3>
      <?php
      if (isset($_SESSION['updateCartError'])) {
+         echo "<p class='errorText'>";
          foreach ($_SESSION['updateCartError'] as $key=>$error){
-            echo $error;
+            echo $error."<br/>";
          }
          unset($_SESSION['updateCartError']);
+         echo '</p>';
      }
      ?>
      <?php
@@ -17,18 +19,25 @@
      ?>
          <form name="cartForm" method="post" action="?action=updateCart">
          <?php
+            $totalPrice = 0;
+            $itemPrice = 0;
              foreach ($cart as $items=>$item) {
+                 $itemPrice = $item['productInfo']['productPrice'];
+                 $itemPrice = $itemPrice*$item['quantity'];
                  echo '<div class="cartItem">';
                  echo '<div class="contentLeft"><h3>'.$item['productInfo']['productName'].'</h3></div>';
                  echo '<div class="contentRight"><p>Description: '.$item['productInfo']['productDescription'].'</p>';
                  echo '<p>Price: $'.$item['productInfo']['productPrice'].'</p>';
-                 echo '<p>Quantity: <input type="text" name="quantities['.$item['id'].']" value="'.$item['quantity'].'" size="4"/></p>';
+                 echo '<p>Quantity: <input type="text" name="quantities['.$item['id'].']" value="'.$item['quantity'].'" size="4" maxlength="2"/></p>';
                  echo '<p><a href="?action=removeFromCart&product='.$item['id'].'">Remove Item</a></p>';
                  echo '</div></div>';
+                 $totalPrice += $itemPrice;
              }
          ?>
              <div class="contentLeft">&nbsp;</div>
              <div class="contentRight">
+                 <p style="float:right;"><?php echo "Total: $".$totalPrice; ?></p>
+                 <div class="clear"></div>
                  <p><input type="submit" value="Update Cart"/>
                  <a href="?action=checkout" style="float:right;">Checkout</a>
                  </p>

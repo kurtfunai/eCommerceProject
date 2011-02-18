@@ -2,27 +2,10 @@
 
 
 <div id="content">
-     <h3>Purchase</h3>
-     <form name="cartForm" method="post" action="">
-         CHECKOUT YEAH!
-     <?php
-     $cart = $this->getValue('cart');
-     foreach ($cart as $items=>$item) {
-         echo '<div class="cartItem">';
-         echo '<div class="contentLeft"><h3>'.$item['productInfo']['productName'].'</h3></div>';
-         echo '<div class="contentRight"><p>Description: '.$item['productInfo']['productDescription'].'</p>';
-         echo '<p>Price: $'.$item['productInfo']['productPrice'].'</p>';
-         echo '<p>Quantity: <input type="text" name=item"'.$item['id'].'" value="'.$item['quantity'].'" size="4"/></p>';
-         echo '<p><a href="?action=cart&removeItem='.$item['id'].'">Remove Item</a></p>';
-         echo '</div></div>';
-     }
-     ?>
-         <div class="contentLeft">&nbsp;</div>
-         <div class="contentRight">
-             <input type="submit" value="Update Cart"/>
-             
-         </div>
-     </form>
+     <h3>Apologies...</h3>
+     
+         The ability to purchase web applications and development time is unavailable at this time.
+     
 
 
 
