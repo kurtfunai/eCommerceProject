@@ -57,6 +57,12 @@ class Request {
             elseif ($query["action"] == "cart") {
                 $page = "cart";
             }
+            elseif ($query["action"] == "addToCart") {
+                $page = "addToCart";
+            }
+            elseif ($query["action"] == "removeFromCart") {
+                $page = "removeFromCart";
+            }
             elseif ($query["action"] == "checkout") {
                 $page = "checkout";
             }

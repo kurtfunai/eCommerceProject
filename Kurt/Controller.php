@@ -75,25 +75,10 @@ class Controller {
         return $view->render();
 
     }
-    
-    public function cartAction() {
-        require_once 'Kurt/View.php';
-        $view = new View(APPLICATION_PATH."/Templates/CartTemplate.phtml");
+
+    public function addToCartAction() {
         require_once 'Kurt/Cart.php';
         $cart = new Cart;
-        require_once 'Kurt/Model.php';
-        $model = new Model;
-        $model->setDb($this->_db);
-
-        $removeId = $this->_request->getQuery("remove");
-        /*if ($removeId) {
-            if (isset($_SESSION['cart'])) {
-                $cart->setItems($_SESSION['cart']);
-            }
-            $cart->addItem($productId, 1);
-            $_SESSION['cart'] = $cart->getItems();
-        }*/
-
         $productId = $this->_request->getQuery("product");
         //if there is a productId addItem to cart class.
         if ($productId) {
@@ -103,19 +88,46 @@ class Controller {
             $cart->addItem($productId, 1);
             $_SESSION['cart'] = $cart->getItems();
         }
+        header('Location: index.php?action=cart');
+        die();
+    }
+
+    public function removeFromCartAction() {
+        require_once 'Kurt/Cart.php';
+        $cart = new Cart;
+        $productId = $this->_request->getQuery("product");
+        if ($productId) {
+            if (isset($_SESSION['cart'])) {
+                $cart->setItems($_SESSION['cart']);
+            }
+            $cart->removeItem($productId);
+            $_SESSION['cart'] = $cart->getItems();
+        }
+        header('Location: index.php?action=cart');
+        die();
+    }
+
+    public function cartAction() {
+        require_once 'Kurt/View.php';
+        $view = new View(APPLICATION_PATH."/Templates/CartTemplate.phtml");
+        require_once 'Kurt/Model.php';
+        $model = new Model;
+        $model->setDb($this->_db);
+        
+
 
         //if there is a session variable, query database for each item and add
         //the product into to the cart variable in the session.
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $items=>$item){
-                if (!$_SESSION['cart'][$items]['productInfo']) {
+                if (!isset($_SESSION['cart'][$items]['productInfo'])) {
                     $_SESSION['cart'][$items]['productInfo'] = $model->getProductInformation($item['id']);
                 }
             }
             $view->setValue('cart', $_SESSION['cart']);
         }
         else {
-            $_SESSION['cart'] = $cart->getItems();
+            $_SESSION['cart'] = null;
         }
         return $view->render();
     }

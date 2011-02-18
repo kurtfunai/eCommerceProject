@@ -16,7 +16,7 @@
                  echo '<div class="contentRight"><p>Description: '.$item['productInfo']['productDescription'].'</p>';
                  echo '<p>Price: $'.$item['productInfo']['productPrice'].'</p>';
                  echo '<p>Quantity: <input type="text" name="'.$item['id'].'" value="'.$item['quantity'].'" size="4"/></p>';
-                 echo '<p><a href="?action=cart&remove='.$item['id'].'">Remove Item</a></p>';
+                 echo '<p><a href="?action=removeFromCart&product='.$item['id'].'">Remove Item</a></p>';
                  echo '</div></div>';
              }
          ?>

@@ -23,8 +23,8 @@ class Cart {
         }
     }
 
-    public function removeItem() {
-        
+    public function removeItem($productId) {
+        unset($this->_items[$productId]);
     }
 
     public function getNumberOfItems() {
