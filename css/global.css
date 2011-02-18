@@ -165,7 +165,14 @@ body {
     font-weight: bold;
 }
 
+.buyNow h2{
+    float:right;
+    text-decoration: none;
+    color: #000;
+    padding-bottom:2px;
+}
 .buyNow a{
+    font-size: 16px !important;
     float:right;
     text-decoration: none;
     color: #000;
