@@ -1,0 +1,42 @@
+<?php include("HeaderTemplate.phtml"); ?>
+
+
+<div id="content">
+     <h3>Purchase</h3>
+     <?php
+     $cart = $this->getValue('cart');
+     if (!empty($cart)) {
+     ?>
+         <form name="cartForm" method="post" action="?action=cart">
+         <?php
+         
+             foreach ($cart as $items=>$item) {
+                 echo '<div class="cartItem">';
+                 echo '<div class="contentLeft"><h3>'.$item['productInfo']['productName'].'</h3></div>';
+                 echo '<div class="contentRight"><p>Description: '.$item['productInfo']['productDescription'].'</p>';
+                 echo '<p>Price: $'.$item['productInfo']['productPrice'].'</p>';
+                 echo '<p>Quantity: <input type="text" name="'.$item['id'].'" value="'.$item['quantity'].'" size="4"/></p>';
+                 echo '<p><a href="?action=cart&remove='.$item['id'].'">Remove Item</a></p>';
+                 echo '</div></div>';
+             }
+         ?>
+             <div class="contentLeft">&nbsp;</div>
+             <div class="contentRight">
+                 <p><input type="submit" value="Update Cart"/>
+                 <a href="?action=checkout" style="float:right;">Checkout</a>
+                 </p>
+
+             </div>
+         </form>
+     <?php
+     }
+     else {
+         echo "You have no items in your cart";
+     }
+     ?>
+
+
+
+</div><!--END CONTENT-->
+
+<?php include("FooterTemplate.phtml"); ?>

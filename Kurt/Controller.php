@@ -52,22 +52,15 @@ class Controller {
     public function hireAction() {
         require_once 'Kurt/View.php';
         $view = new View(APPLICATION_PATH."/Templates/HireTemplate.phtml");
-        require_once 'Kurt/Form.php';
-        $form = new Form;
-        $view->setForm($form);
-
-        if ($this->_request->isPost()) {
-            if($form->isValid($this->_request->getPost())) {
-                $_SESSION['sentConfirmation'] = "Thank you, your information has been sent!";
-            }
-        }
+        require_once 'Kurt/ContactForm.php';
+        
         return $view->render();
     }
 
     public function contactAction() {
         require_once 'Kurt/View.php';
         $view = new View(APPLICATION_PATH."/Templates/ContactTemplate.phtml");
-        require_once 'Kurt/Form.php';
+        require_once 'Kurt/ContactForm.php';
         $form = new Form;
         $view->setValue('form', $form);
 
@@ -83,41 +76,45 @@ class Controller {
 
     }
     
-    public function buyNowAction() {
+    public function cartAction() {
         require_once 'Kurt/View.php';
-        $view = new View(APPLICATION_PATH."/Templates/ProductInfoTemplate.phtml");
+        $view = new View(APPLICATION_PATH."/Templates/CartTemplate.phtml");
+        require_once 'Kurt/Cart.php';
+        $cart = new Cart;
+        require_once 'Kurt/Model.php';
+        $model = new Model;
+        $model->setDb($this->_db);
+
+        $removeId = $this->_request->getQuery("remove");
+        
+
         $productId = $this->_request->getQuery("product");
-
+        //if there is a productId addItem to cart class.
         if ($productId) {
-            require_once 'Kurt/Model.php';
-            $model = new Model;
-            $model->setDb($this->_db);
-            $productInfo = $model->getProductInformation($productId);
-
-            if (!empty($productInfo)){
-                require_once 'Kurt/Cart.php';
-                $cart = new Cart;
-                
-                if (isset($_SESSION['cart'])) {
-                    $cart->setItems($_SESSION['cart']);
-                }
-
-                $cart->addItem($productId, 1);
-                /*if (!in_array($productId, $cart->getItems())) {
-                    $cart->addItem($productId, 1);
-                }*/
-
-                $_SESSION['cart'] = $cart->getItems();
-                
-                foreach ($productInfo as $key => $value) {
-                    $view->setValue($key, $value);
-                }
+            if (isset($_SESSION['cart'])) {
+                $cart->setItems($_SESSION['cart']);
             }
+            $cart->addItem($productId, 1);
+            $_SESSION['cart'] = $cart->getItems();
+        }
+
+        //if there is a session variable, query database for each item and add
+        //the product into to the cart variable in the session.
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $items=>$item){
+                $_SESSION['cart'][$items]['productInfo'] = $model->getProductInformation($item['id']);
+            }
+            $view->setValue('cart', $_SESSION['cart']);
         }
         else {
-            //return error message
+            $_SESSION['cart'] = $cart->getItems();
         }
-        
+        return $view->render();
+    }
+
+    public function checkoutAction() {
+        require_once 'Kurt/View.php';
+        $view = new View(APPLICATION_PATH."/Templates/CheckoutTemplate.phtml");
         return $view->render();
     }
 

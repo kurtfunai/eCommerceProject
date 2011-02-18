@@ -35,12 +35,16 @@ class Cart {
         $this->_items = $items;
     }
 
+    public function hasItems() {
+        return !empty($this->_items);
+    }
+
     public function getItems() {
         return $this->_items;
     }
 
     public function updateQuantity($productId, $quantity) {
-       $this->_items[$productId]['quantity'] = $quantity;
+        $this->_items[$productId]['quantity'] = $quantity;
     }
     
 }

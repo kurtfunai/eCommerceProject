@@ -148,6 +148,13 @@ body {
 /*	font-size: 80%;
 */}
 
+.cartItem {
+    float:left;
+    border-top:1px solid black;
+    margin: 0px 0px 12px 0px;
+    padding: 12px;
+}
+
 .clear {
     clear:both;
 }
@@ -227,16 +234,16 @@ body {
     padding:12px 0 0 0;
 }
 
-.submit {
+#hireForm input[type="submit"] {
     padding:10px;
     background-color:#474812;
     text-align:left;
     font-weight: bold;
     font-size:16px !important;
-    width:95px;
+    min-width:95px;
     height: 42px;
     border:2px solid #0a0;
-    display:block;
+    display:inline-block;
     margin:5px 0 0 0;
     font-size:18px;
     font-family:Georgia,"Times New Roman",Times,serif;
@@ -244,7 +251,7 @@ body {
     color: #fff !important;
 }
 
-input[type="submit"]:hover {
+#hireForm input[type="submit"]:hover {
     color:#fff !important;
 	background: #419B25;
 }
