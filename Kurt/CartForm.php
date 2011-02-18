@@ -9,22 +9,17 @@
 namespace Kurt;
 
 class CartForm {
-    protected $values = array("contactName"=>"","contactInfo"=>"","contactDescription"=>"");
+    protected $values = array("quantities"=>"");
     protected $errors = array();
-    protected $_uploadedFileName;
-    protected $_uploadedFilePath;
 
     public function isValid($data){
         $this->populate($data);
         $data = $this->getValues();
-        if (!isset($data['contactName']) || $data['contactName'] =="") {
-            $this->errors[] = "Please enter a contact name";
-        }
-        if (!isset($data['contactInfo']) || $data['contactInfo'] =="") {
-            $this->errors[] = "Please enter an email or phone number to reach you at";
-        }
-        if (!isset($data['contactDescription']) || $data['contactDescription'] =="") {
-            $this->errors[] = "Please enter a description of how I can help";
+        foreach ($data as $key => $product) {
+            foreach ($product as $key=>$value)
+                if (!is_numeric($value)) {
+                   $this->errors[] = "Please enter numeric quantities";
+                }
         }
         return empty($this->errors);
     }
@@ -38,13 +33,11 @@ class CartForm {
         }
     }
 
-    public function getValue($formElement, $defaultValue) {
-        if ($this->values[$formElement] == "") {
-            return $defaultValue;
-        }
-        else {
+    public function getValue($formElement) {
+        if (isset($this->values[$formElement]) && $this->values[$formElement] != "") {
             return $this->values[$formElement];
         }
+        return null;
     }
 
     public function getValues(){

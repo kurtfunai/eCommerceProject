@@ -107,6 +107,37 @@ class Controller {
         die();
     }
 
+    public function updateCartAction() {
+        require_once 'Kurt/Cart.php';
+        $cart = new Cart;
+        require_once 'Kurt/CartForm.php';
+        $cartForm = new CartForm;
+        if ($this->_request->isPost()) {
+            //$_SESSION['test'] = $cartForm->isValid($this->_request->getPost());
+            if ($cartForm->isValid($this->_request->getPost())) {
+                //$cart->updateQuantity($productId, $quantity);
+                $itemUpdates = $cartForm->getValue('quantities');
+                if (!empty($itemUpdates)) {
+                    if (isset($_SESSION['cart'])) {
+                        $cart->setItems($_SESSION['cart']);
+                    }
+                    foreach ($itemUpdates as $productId=>$quantity) {
+                        $cart->updateQuantity($productId, $quantity);
+                    }
+                    $_SESSION['cart'] = $cart->getItems();
+                }
+            }
+            else {
+                if ($cartForm->hasErrors()) {
+                    $_SESSION['updateCartError'] = $cartForm->getErrorMessages();
+                }
+            }
+        }
+        
+        header('Location: index.php?action=cart');
+        die();
+    }
+
     public function cartAction() {
         require_once 'Kurt/View.php';
         $view = new View(APPLICATION_PATH."/Templates/CartTemplate.phtml");
