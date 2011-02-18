@@ -86,7 +86,13 @@ class Controller {
         $model->setDb($this->_db);
 
         $removeId = $this->_request->getQuery("remove");
-        
+        /*if ($removeId) {
+            if (isset($_SESSION['cart'])) {
+                $cart->setItems($_SESSION['cart']);
+            }
+            $cart->addItem($productId, 1);
+            $_SESSION['cart'] = $cart->getItems();
+        }*/
 
         $productId = $this->_request->getQuery("product");
         //if there is a productId addItem to cart class.
@@ -102,7 +108,9 @@ class Controller {
         //the product into to the cart variable in the session.
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $items=>$item){
-                $_SESSION['cart'][$items]['productInfo'] = $model->getProductInformation($item['id']);
+                if (!$_SESSION['cart'][$items]['productInfo']) {
+                    $_SESSION['cart'][$items]['productInfo'] = $model->getProductInformation($item['id']);
+                }
             }
             $view->setValue('cart', $_SESSION['cart']);
         }
