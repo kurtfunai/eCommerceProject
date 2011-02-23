@@ -41,9 +41,8 @@
                  
                  <div class="checkoutButtons">
                      <input type="submit" value="Update Cart"/>
-                     <p style="float:right;"><?php echo "<strong>Total</strong>: $".$totalPrice; ?>.00</p>
+                     <p style="float:right;"><?php echo "<strong>Total</strong>: $";echo sprintf("%01.2f", $totalPrice);?></p>
                      <div class="clear"></div>
-                    
                     <a href="?action=checkout">Checkout</a>
                  </div>
              </div>
