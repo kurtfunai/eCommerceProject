@@ -3,8 +3,6 @@
  * Object Oriented eCommerce website
  * Kurtis Funai
  */
-
-
 date_default_timezone_set("America/Toronto");
 set_include_path(dirname(__FILE__) . PATH_SEPARATOR . get_include_path());
 define('APPLICATION_PATH', dirname(__FILE__));

@@ -1,6 +1,8 @@
 nbproject/
-*.jpg
-*.png
-*.gif
 *.psd
 .htaccess
+index_host.php
+index_dev.php
+php.ini
+phpbackup.ini
+Database/host.sql
