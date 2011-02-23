@@ -26,20 +26,24 @@
                  $itemPrice = $itemPrice*$item['quantity'];
                  echo '<div class="cartItem">';
                  echo '<div class="contentLeft"><h3>'.$item['productInfo']['productName'].'</h3></div>';
-                 echo '<div class="contentRight"><p>Description: '.$item['productInfo']['productDescription'].'</p>';
-                 echo '<p>Price: $'.$item['productInfo']['productPrice'].'</p>';
-                 echo '<p>Quantity: <input type="text" name="quantities['.$item['id'].']" value="'.$item['quantity'].'" size="4" maxlength="2"/></p>';
+                 echo '<div class="contentRight"><p><strong>Description</strong>: <br/>'.$item['productInfo']['productDescription'].'</p>';
+                 echo '<div class="priceAndQuantity">';
+                 echo '<p><strong>Price</strong>: $'.$item['productInfo']['productPrice'].'</p>';
+                 echo '<p><strong>Quantity</strong>: <input type="text" name="quantities['.$item['id'].']" value="'.$item['quantity'].'" size="4" maxlength="2"/></p>';
                  echo '<p><a href="?action=removeFromCart&product='.$item['id'].'">Remove Item</a></p>';
+                 echo '</div>';
                  echo '</div></div>';
                  $totalPrice += $itemPrice;
              }
          ?>
              <div class="contentLeft">&nbsp;</div>
              <div class="contentRight">
-                 <p style="float:right;"><?php echo "Total: $".$totalPrice; ?></p>
-                 <div class="clear"></div>
+                 
                  <div class="checkoutButtons">
-                    <input type="submit" value="Update Cart"/>
+                     <input type="submit" value="Update Cart"/>
+                     <p style="float:right;"><?php echo "<strong>Total</strong>: $".$totalPrice; ?>.00</p>
+                     <div class="clear"></div>
+                    
                     <a href="?action=checkout">Checkout</a>
                  </div>
              </div>
