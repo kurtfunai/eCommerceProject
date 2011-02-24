@@ -62,10 +62,14 @@ class Controller {
         $view = new View(APPLICATION_PATH."/Templates/ContactTemplate.phtml");
         require_once 'Kurt/ContactForm.php';
         $form = new Form;
+
         $view->setValue('form', $form);
 
         if ($this->_request->isPost()) {
             if($view->getValue('form')->isValid($this->_request->getPost())) {
+                require_once 'Kurt/Email.php';
+                $email = new Email;
+
                 $_SESSION['sentConfirmation'] = "Thank you, your information has been sent!";
             
                 header('Location: index.php?action=contact');

@@ -84,6 +84,10 @@ body {
     margin-bottom: 12px;
 }
 
+#content p {
+    margin-bottom: 12px;
+}
+
 .contentLeft {
 	width:180px;
 	/*padding-left:12px;*/
@@ -144,9 +148,6 @@ body {
 	margin-right:auto;
 }
 
-.contentDescription {
-/*	font-size: 80%;
-*/}
 
 .cartItem {
     float:left;
@@ -227,11 +228,13 @@ body {
 	color: #999;
 }
 
-#hireForm input, textarea {
-    font-size: 14px;
-    margin:6px 0px 6px 0px;
-    padding-bottom: 12px;
-    color: #444444;
+.aboutMePic {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    margin: 12px 12px 12px 12px;
+    float:right;
+
 }
 
 #hireForm fieldset {
@@ -239,6 +242,19 @@ body {
     width:400px;
     margin:0;
     padding:12px 0 0 0;
+}
+
+#hireForm input, textarea {
+    font-size: 14px;
+    margin:6px 0px 6px 0px;
+    padding-top:6px;
+    padding-bottom: 6px;
+    color: #444444;
+    font-family: Helvetica, Arial;
+}
+
+#hireForm textarea {
+    padding-left: 3px;
 }
 
 #hireForm input[type="submit"] {
@@ -270,10 +286,12 @@ body {
 .checkoutButtons {
     border-top: 1px solid #aaaaaa;
     margin-top: 12px;
+    margin-bottom: 80px;
     padding-top: 12px;
 }
 .checkoutButtons a{
     float:right;
+    display:block;
     padding: 7px 8px 3px 8px;
     background-color:#4e614c;
     text-align:left;
