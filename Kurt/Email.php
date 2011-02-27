@@ -10,7 +10,7 @@ namespace Kurt;
 
 class Email {
     protected $_values = array();
-    protected $_message = "test";
+    protected $_message = "testtestest";
     protected $_to = "me@kurtfunai.com";
     protected $_from = "info@kurtfunai.com";
     protected $_subject = "Contact Form";
@@ -43,11 +43,15 @@ class Email {
     public function send() {
         $headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        var_dump($this->_values);
-		// Additional headers
 		$headers .= 'To: Kurt Funai <me@kurtfunai.com>' . "\r\n";
 		$headers .= 'From: KurtFunai.com <info@kurtfunai.com>' . "\r\n";
-        mail($this->_to, $this->_subject, $this->_message, $headers);
+
+        $message = "<h3>Contact form - KurtFunai.com</h3>"
+                ."<p><strong>Contact Name</strong>: ". htmlentities($this->_values['contactName']) ."</p>"
+                ."<p><strong>Contact Info</strong>: ". htmlentities($this->_values['contactInfo']) ."</p>"
+                ."<p><strong>Description</strong>: ". htmlentities($this->_values['contactDescription']) ."</p>";
+        
+        mail($this->_to, $this->_subject, $message, $headers);
     }
 }
 

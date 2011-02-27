@@ -70,7 +70,6 @@ class Controller {
                 require_once 'Kurt/Email.php';
                 $email = new Email;
                 $email->setValues($view->getValue('form')->getValues());
-                $email->cleanseValues();
                 $email->send();
 
                 $_SESSION['sentConfirmation'] = "Thank you, your information has been sent!";
