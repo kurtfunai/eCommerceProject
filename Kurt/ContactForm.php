@@ -11,8 +11,6 @@ namespace Kurt;
 class Form {
     protected $values = array("contactName"=>"","contactInfo"=>"","contactDescription"=>"");
     protected $errors = array();
-    protected $_uploadedFileName;
-    protected $_uploadedFilePath;
 
     public function isValid($data){
         $this->populate($data);

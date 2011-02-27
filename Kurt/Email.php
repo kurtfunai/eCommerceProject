@@ -34,10 +34,16 @@ class Email {
         return $this->_values;
     }
 
+    public function cleanseValues() {
+        foreach ($this->_values as $key=>$value) {
+            $value = htmlentities($value);
+        }
+    }
+
     public function send() {
         $headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
+        var_dump($this->_values);
 		// Additional headers
 		$headers .= 'To: Kurt Funai <me@kurtfunai.com>' . "\r\n";
 		$headers .= 'From: KurtFunai.com <info@kurtfunai.com>' . "\r\n";
