@@ -70,6 +70,8 @@ class Controller {
                 require_once 'Kurt/Email.php';
                 $email = new Email;
 
+                $email->send();
+
                 $_SESSION['sentConfirmation'] = "Thank you, your information has been sent!";
             
                 header('Location: index.php?action=contact');
