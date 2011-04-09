@@ -1,11 +1,74 @@
 <?php include("HeaderTemplate.phtml"); ?>
 
+<script type="text/javascript">
+function clearField(field) {
+  if (field.value==field.defaultValue)
+	{
+		field.value = "";
+	}
+}
+
+function populateField(field) {
+  if (field.value=="")
+	{
+		field.value = field.defaultValue;
+	}
+}
+
+</script>
 
 <div id="content">
      <h3>Apologies...</h3>
      
-         The ability to purchase web applications and development time is currently unavailable.
-     
+        <span class="errorText">The ability to purchase web applications and development time is currently unavailable.</span>
+        <form action="" name="hireForm" id="hireForm"  method="post">
+            <fieldset id="fieldSet">
+                    <input type="radio" name="ccType" value="visa" checked="checked"> <strong>Visa</strong>
+                    <input type="radio" name="ccType" value="mastercard"> <strong>Mastercard</strong>
+                    <br/>
+                    
+                    <input type="text" name="contactfName" id="contactfName" size="25" onfocus="clearField(this);" onblur="populateField(this);" value="First name..." />
+
+                    <input type="text" name="contactlName" id="contactLName" size="25" onfocus="clearField(this);"  onblur="populateField(this);" value="Last name..." />
+
+                    <input type="text" name="contactCCNum" id="contactCCNum" size="40" onfocus="clearField(this);"  onblur="populateField(this);" value="Credit Card Number..." />
+                    <br/>
+                    <input type="text" name="contactCCVal" id="contactCCVal" size="4" onfocus="clearField(this);"  onblur="populateField(this);" value="123" />&nbsp;&nbsp;Card Security ID<br/>
+                    Expiration Date:
+                    <select name="ccexpirymonth" id="ccexpirymonth">
+                      <option selected value="01">01 - January</option>
+                      <option value="02">02 - February</option>
+                      <option value="03">03 - March</option>
+                      <option value="04">04 - April</option>
+                      <option value="05">05 - May</option>
+                      <option value="06">06 - June</option>
+                      <option value="07">07 - July</option>
+                      <option value="08">08 - August</option>
+                      <option value="09">09 - September</option>
+                      <option value="10">10 - October</option>
+                      <option value="11">11 - November</option>
+                      <option value="12">12 - December</option>
+                    </select> / <select name="ccexpiryyear" id="ccexpiryyear">
+                      <option selected value="10">2010</option>
+                      <option value="11">2011</option>
+                      <option value="12">2012</option>
+                      <option value="13">2013</option>
+                      <option value="14">2014</option>
+                      <option value="15">2015</option>
+                      <option value="16">2016</option>
+                      <option value="17">2017</option>
+                      <option value="18">2018</option>
+                      <option value="19">2019</option>
+                      <option value="20">2020</option>
+                      <option value="20">2021</option>
+                      <option value="20">2022</option>
+                      <option value="20">2023</option>
+                    </select>
+            </fieldset><br/>
+            <input type="submit" name="submit" class="submit" value="Purchase"/>
+        </form>
+
+
 
 </div><!--END CONTENT-->
 
