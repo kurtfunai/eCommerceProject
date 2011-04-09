@@ -3,6 +3,7 @@
 
 <div id="content">
      <h3>Purchase</h3>
+     
      <?php
      if (isset($_SESSION['updateCartError'])) {
          echo "<p class='errorText'>";
@@ -38,19 +39,24 @@
          ?>
              <div class="contentLeft">&nbsp;</div>
              <div class="contentRight">
-                 
+                 <div class="clear"></div>
+                 <p style="text-align: right;">
+                     <a href="?action=products">Continue shopping</a>
+                 </p>
                  <div class="checkoutButtons">
                      <input type="submit" value="Update Cart"/>
                      <p style="float:right;"><?php echo "<strong>Total</strong>: $";echo sprintf("%01.2f", $totalPrice);?></p>
                      <div class="clear"></div>
                     <a href="?action=checkout">Checkout</a>
                  </div>
+                 
              </div>
          </form>
+         
      <?php
      }
      else {
-         echo "You have no items in your cart";
+         echo "You currently have no items in your cart. <a href='?action=products'>Get shopping</a>!";
      }
      ?>
 

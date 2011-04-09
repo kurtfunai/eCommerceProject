@@ -54,4 +54,3 @@ class Email {
         mail($this->_to, $this->_subject, $message, $headers);
     }
 }
-

@@ -42,6 +42,7 @@ class Request {
     public function actionToPerform($query) {
         $page = "";
         if (isset($query["action"])) {
+            
             if ($query["action"] == "products") {
                 $page = "products";
             }
@@ -53,6 +54,9 @@ class Request {
             }
             elseif ($query["action"] == "contact") {
                 $page = "contact";
+            }
+            elseif ($query["action"] == "policy") {
+                $page = "policy";
             }
             elseif ($query["action"] == "cart") {
                 $page = "cart";
@@ -69,12 +73,15 @@ class Request {
             elseif ($query["action"] == "checkout") {
                 $page = "checkout";
             }
+            elseif ($query["action"] == "home") {
+                $page = "home";
+            }
             else {
                 $page = "error";
             }
         }
         else {
-            $page = "products";
+            $page = "home";
         }
         return $page."Action";
     }

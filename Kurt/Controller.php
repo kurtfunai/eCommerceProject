@@ -21,6 +21,12 @@ class Controller {
         $this->_db = $db;
     }
 
+    public function homeAction() {
+        require_once 'Kurt/View.php';
+        $view = new View(APPLICATION_PATH."/Templates/HomeTemplate.phtml");
+        return $view->render();
+    }
+    
     public function productsAction() {
         require_once 'Kurt/View.php';
         $view = new View(APPLICATION_PATH."/Templates/ProductsTemplate.phtml");
@@ -175,9 +181,9 @@ class Controller {
         return $view->render();
     }
 
-    public function homeAction() {
+    public function policyAction() {
         require_once 'Kurt/View.php';
-        $view = new View(APPLICATION_PATH."/Templates/ProductsTemplate.phtml");
+        $view = new View(APPLICATION_PATH."/Templates/PolicyTemplate.phtml");
         return $view->render();
     }
 
